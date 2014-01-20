@@ -1,0 +1,14 @@
+#!/bin/sh
+binname="junglediskserver"
+startcommand="/etc/init.d/junglediskserver start"
+email=j@lmt.ca
+
+process=`ps auxwww | grep $binname | grep -v grep | awk '{print $11}'`
+if [ -z "$process" ]; then
+	echo "Couldn't find jungledisk running, starting jungledisk."
+	$startcommand
+	running=`ps auxwwf | grep server_linux`echo $running
+	echo "Teamspeak wasn't running and was started automatically"
+else
+exit 0
+fi
