@@ -1,12 +1,12 @@
 #!/bin/sh
 
 if [ -f "/usr/local/bin/junglediskserver" ]; then
-bin_name="junglediskserver"
+	bin_name="junglediskserver"
 elif [ -f "/usr/local/bin/mysecurebackupserver" ]; then
-bin_name="mysecurebackupserver"
+	bin_name="mysecurebackupserver"
 else
-echo "Can't find Jungledisk, is it installed correctly?"
-exit 1
+	echo "Can't find Jungledisk, is it installed correctly?"
+	exit 1
 fi
 
 process=`ps auxwww | grep $bin_name | awk '{print $11}'`

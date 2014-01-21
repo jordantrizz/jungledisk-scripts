@@ -1,3 +1,12 @@
 #!/bin/sh
-/etc/init.d/junglediskserver restart
+if [ -f "/usr/local/bin/junglediskserver" ]; then
+	bin_name="junglediskserver"
+elif [ -f "/usr/local/bin/mysecurebackupserver" ]; then
+	bin_name="mysecurebackupserver"
+else
+	echo "Can't find Jungledisk, is it installed correctly?"
+	exit 1
+fi
+
+/etc/init.d/$bin_name restart
 
