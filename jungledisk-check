@@ -1,14 +1,18 @@
 #!/bin/sh
-binname="junglediskserver"
-startcommand="/etc/init.d/junglediskserver start"
-email=j@lmt.ca
 
-process=`ps auxwww | grep $binname | grep -v grep | awk '{print $11}'`
+if [ -f "/usr/local/bin/junglediskserver" ]; then
+bin_name="junglediskserver"
+elif [ -f "/usr/local/bin/mysecurebackupserver" ]; then
+bin_name="mysecurebackupserver"
+else
+echo "Can't find Jungledisk, is it installed correctly?"
+exit 1
+fi
+
+process=`ps auxwww | grep $bin_name | awk '{print $11}'`
 if [ -z "$process" ]; then
 	echo "Couldn't find jungledisk running, starting jungledisk."
-	$startcommand
-	running=`ps auxwwf | grep server_linux`echo $running
-	echo "Teamspeak wasn't running and was started automatically"
+	/etc/init.d/$bin_name start
 else
 exit 0
 fi
