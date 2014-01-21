@@ -13,6 +13,7 @@ Installation
 2. Add the following /etc/crontab entries
 
 * * * * * root /usr/local/sbin/jungledisk-scripts/jungledisk-check
+
 5 59 * * 0 root /usr/local/sbin/jungledisk-scripts/jungledisk-restart > /dev/null
 
 
